@@ -1,136 +1,749 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tech Orbit Admin</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Tech Orbit Admin Dashboard</title>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
-        body { font-family: Arial; background: #0D1B2A; color: white; margin: 0; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        h1 { color: #FF8C00; text-align: center; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th { background: #2E6FBE; padding: 12px; text-align: left; }
-        td { padding: 10px; border-bottom: 1px solid #333; }
-        tr:hover { background: #1A2332; }
-        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 20px 0; }
-        .stat-box { background: #1A2332; padding: 20px; border-radius: 5px; text-align: center; }
-        .stat-num { font-size: 32px; color: #FF8C00; font-weight: bold; }
-        button { padding: 10px 20px; background: #FF8C00; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 10px; }
-        button:hover { background: #E36C09; }
-        .search { margin: 20px 0; }
-        input[type="text"] { padding: 10px; width: 300px; border: 1px solid #2E6FBE; border-radius: 5px; }
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0d1b2a;
+        color: white;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 30px 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #ff8c00;
+        margin-bottom: 30px;
+      }
+
+      /* LOGIN */
+
+      #loginSection {
+        max-width: 420px;
+        margin: 80px auto;
+        background: #1a2332;
+        padding: 30px;
+        border-radius: 12px;
+      }
+
+      #loginSection h2 {
+        text-align: center;
+        margin-top: 0;
+        color: #ff8c00;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0 15px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+      }
+
+      button {
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .login-btn {
+        width: 100%;
+        background: #ff8c00;
+        color: white;
+      }
+
+      .login-btn:hover {
+        background: #e36c09;
+      }
+
+      #loginError {
+        color: #ff6b6b;
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      /* DASHBOARD */
+
+      #dashboardSection {
+        display: none;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+      }
+
+      .admin-email {
+        color: #ccc;
+      }
+
+      .logout-btn {
+        background: #dc3545;
+        color: white;
+      }
+
+      .logout-btn:hover {
+        background: #b52a37;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 25px;
+      }
+
+      .stat-box {
+        background: #1a2332;
+        padding: 25px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .stat-title {
+        color: #bbb;
+        margin-bottom: 10px;
+      }
+
+      .stat-number {
+        font-size: 36px;
+        font-weight: bold;
+        color: #ff8c00;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .refresh-btn {
+        background: #ff8c00;
+        color: white;
+      }
+
+      .csv-btn {
+        background: #198754;
+        color: white;
+      }
+
+      .search-box {
+        margin-bottom: 20px;
+      }
+
+      .search-box input {
+        max-width: 400px;
+      }
+
+      .table-container {
+        overflow-x: auto;
+        background: #1a2332;
+        border-radius: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 1000px;
+      }
+
+      th {
+        background: #2e6fbe;
+        padding: 13px;
+        text-align: left;
+      }
+
+      td {
+        padding: 12px;
+        border-bottom: 1px solid #333;
+      }
+
+      tr:hover {
+        background: #233247;
+      }
+
+      #status {
+        margin: 15px 0;
+        color: #bbb;
+      }
+
+      @media (max-width: 700px) {
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 20px 12px;
+        }
+
+        h1 {
+          font-size: 25px;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="container">
-        <h1>TECH ORBIT - ADMIN DASHBOARD</h1>
-        
+      <!-- LOGIN -->
+      <section id="loginSection">
+        <h2>Tech Orbit Admin</h2>
+
+        <form id="loginForm">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="Admin email" required />
+
+          <label>Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div id="loginError"></div>
+      </section>
+
+      <!-- DASHBOARD -->
+      <section id="dashboardSection">
+        <h1>Tech Orbit Admin Dashboard</h1>
+
+        <div class="topbar">
+          <div class="admin-email">
+            Logged in as:
+            <strong id="adminEmail"></strong>
+          </div>
+
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+
+        <!-- STATISTICS -->
         <div class="stats">
-            <div class="stat-box">
-                <div class="stat-num" id="total">0</div>
-                <div>Total Registrations</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-num" id="today">0</div>
-                <div>Today's Registrations</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-num" id="year2">0</div>
-                <div>2nd Year</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-num" id="year3">0</div>
-                <div>3rd Year</div>
-            </div>
+          <div class="stat-box">
+            <div class="stat-title">Total Registrations</div>
+
+            <div class="stat-number" id="totalCount">0</div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-title">2nd Year</div>
+
+            <div class="stat-number" id="secondYearCount">0</div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-title">3rd  Year</div>
+
+            <div class="stat-number" id="otherYearCount">0</div>
+          </div>
         </div>
 
-        <div class="search">
-            <input type="text" id="search" placeholder="Search by name, email, roll no...">
-            <button onclick="downloadCSV()"> Download CSV</button>
-            <button onclick="clearData()">Clear All</button>
+        <!-- ACTIONS -->
+        <div class="actions">
+          <button class="refresh-btn" id="refreshBtn">🔄 Refresh</button>
+
+          <button class="csv-btn" id="csvBtn">📥 Download CSV</button>
         </div>
 
-        <table id="table">
+        <!-- SEARCH -->
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search name, email, roll number..."
+          />
+        </div>
+
+        <div id="status">Loading registrations...</div>
+
+        <!-- TABLE -->
+        <div class="table-container">
+          <table>
             <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Timestamp</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Roll No</th>
-                    <th>Year</th>
-                    <th>Department</th>
-                </tr>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Roll No</th>
+                <th>Year</th>
+                <th>Department</th>
+<th>Action</th>
+              </tr>
             </thead>
-            <tbody id="tbody"></tbody>
-        </table>
+
+            <tbody id="registrationTable"></tbody>
+          </table>
+        </div>
+      </section>
     </div>
 
     <script>
-        function loadData() {
-            let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
-            let search = document.getElementById('search').value.toLowerCase();
-            
-            // Filter
-            let filtered = registrations.filter(r => 
-                (r.firstName + r.lastName + r.email + r.rollNo).toLowerCase().includes(search)
-            );
+      // ============================================
+      // SUPABASE CONFIGURATION
+      // ============================================
 
-            // Display
-            let html = filtered.map((r, i) => `
-                <tr>
-                    <td>${registrations.length - registrations.indexOf(r)}</td>
-                    <td>${r.timestamp}</td>
-                    <td>${r.firstName} ${r.lastName}</td>
-                    <td>${r.email}</td>
-                    <td>${r.phone}</td>
-                    <td>${r.rollNo}</td>
-                    <td>${r.year}</td>
-                    <td>${r.department}</td>
-                </tr>
-            `).join('');
+      const SUPABASE_URL = "https://seltfnpxbmekyskxztmv.supabase.co";
 
-            document.getElementById('tbody').innerHTML = html || '<tr><td colspan="8" style="text-align:center;">No registrations yet</td></tr>';
+      const SUPABASE_KEY = "sb_publishable_Euu6tTc4yeQBhMvWo1VuNQ_vBKvxhs9";
 
-            // Stats
-            document.getElementById('total').textContent = registrations.length;
-            document.getElementById('today').textContent = registrations.filter(r => r.timestamp.includes(new Date().toLocaleDateString())).length;
-            document.getElementById('year2').textContent = registrations.filter(r => r.year === '2nd Year').length;
-            document.getElementById('year3').textContent = registrations.filter(r => r.year === '3rd Year').length;
+      const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY,
+      );
+
+      // ============================================
+      // ELEMENTS
+      // ============================================
+
+      const loginSection = document.getElementById("loginSection");
+
+      const dashboardSection = document.getElementById("dashboardSection");
+
+      const loginForm = document.getElementById("loginForm");
+
+      const loginError = document.getElementById("loginError");
+
+      const adminEmail = document.getElementById("adminEmail");
+
+      const registrationTable = document.getElementById("registrationTable");
+
+      const totalCount = document.getElementById("totalCount");
+
+      const secondYearCount = document.getElementById("secondYearCount");
+
+      const otherYearCount = document.getElementById("otherYearCount");
+
+      const status = document.getElementById("status");
+
+      const searchInput = document.getElementById("searchInput");
+
+      let registrations = [];
+
+      // ============================================
+      // LOGIN
+      // ============================================
+
+      loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        loginError.textContent = "";
+
+        const email = document.getElementById("email").value.trim();
+
+        const password = document.getElementById("password").value;
+
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
+          email: email,
+          password: password,
+        });
+
+        if (error) {
+          loginError.textContent = "Login failed: " + error.message;
+
+          return;
         }
 
-        function downloadCSV() {
-            let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
-            if (registrations.length === 0) {
-                alert('No registrations to download!');
-                return;
-            }
+        showDashboard(data.user);
+      });
 
-            let csv = 'Timestamp,First Name,Last Name,Email,Phone,Roll No,Year,Department\n';
-            registrations.forEach(r => {
-                csv += `"${r.timestamp}","${r.firstName}","${r.lastName}","${r.email}","${r.phone}","${r.rollNo}","${r.year}","${r.department}"\n`;
-            });
+      // ============================================
+      // SHOW DASHBOARD
+      // ============================================
 
-            let blob = new Blob([csv], { type: 'text/csv' });
-            let url = window.URL.createObjectURL(blob);
-            let a = document.createElement('a');
-            a.href = url;
-            a.download = `tech_orbit_registrations_${new Date().toISOString().split('T')[0]}.csv`;
-            a.click();
-            
-            alert(` CSV Downloaded! (${registrations.length} registrations)`);
+      function showDashboard(user) {
+        loginSection.style.display = "none";
+
+        dashboardSection.style.display = "block";
+
+        adminEmail.textContent = user.email;
+
+        loadRegistrations();
+      }
+
+      // ============================================
+      // LOAD REGISTRATIONS
+      // ============================================
+
+      async function loadRegistrations() {
+        status.textContent = "Loading registrations...";
+
+        const { data, error } = await supabaseClient
+          .from("registrations")
+          .select("*")
+          .order("created_at", {
+            ascending: false,
+          });
+
+        if (error) {
+          status.textContent = "Error loading registrations: " + error.message;
+
+          console.error(error);
+
+          return;
         }
 
-        function clearData() {
-            if (confirm('Delete ALL data? Cannot undo!')) {
-                localStorage.removeItem('registrations');
-                loadData();
-                alert('Data cleared!');
-            }
+        registrations = data || [];
+
+        updateStatistics();
+
+        displayRegistrations(registrations);
+
+        status.textContent = registrations.length + " registration(s) loaded.";
+      }
+
+      // ============================================
+      // STATISTICS
+      // ============================================
+
+      function updateStatistics() {
+        totalCount.textContent = registrations.length;
+
+        const secondYear = registrations.filter(function (item) {
+          return item.year === "2nd Year";
+        }).length;
+
+        secondYearCount.textContent = secondYear;
+
+        otherYearCount.textContent = registrations.length - secondYear;
+      }
+
+      // ============================================
+      // DISPLAY TABLE
+      // ============================================
+
+      function displayRegistrations(data) {
+        registrationTable.innerHTML = "";
+
+        if (data.length === 0) {
+          registrationTable.innerHTML = `<tr>
+                    <td colspan="10" style="text-align:center;">
+                        No registrations found.
+                    </td>
+                </tr>`;
+
+          return;
         }
 
-        document.getElementById('search').addEventListener('input', loadData);
-        window.addEventListener('load', loadData);
-        setInterval(loadData, 3000); // Refresh every 3 seconds
+        data.forEach(function (item) {
+          const row = document.createElement("tr");
+
+          const date = item.created_at
+            ? new Date(item.created_at).toLocaleString()
+            : "";
+
+          row.innerHTML = `
+                <td>${escapeHTML(item.id)}</td>
+
+                <td>${escapeHTML(date)}</td>
+
+                <td>${escapeHTML(item.first_name)}</td>
+
+                <td>${escapeHTML(item.last_name)}</td>
+
+                <td>${escapeHTML(item.email)}</td>
+
+                <td>${escapeHTML(item.phone)}</td>
+
+                <td>${escapeHTML(item.roll_no)}</td>
+
+                <td>${escapeHTML(item.year)}</td>
+
+                <td>${escapeHTML(item.department)}</td>
+
+<td>
+    <button
+        onclick="deleteRegistration(${item.id})"
+        style="
+            background:#dc3545;
+            color:white;
+            padding:8px 12px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        "
+    >
+         Delete
+    </button>
+</td>
+            `;
+
+          registrationTable.appendChild(row);
+        });
+      }
+
+      // ============================================
+      // SEARCH
+      // ============================================
+
+      searchInput.addEventListener("input", function () {
+        const search = searchInput.value.toLowerCase().trim();
+
+        if (!search) {
+          displayRegistrations(registrations);
+
+          return;
+        }
+
+        const filtered = registrations.filter(function (item) {
+          return (
+            String(item.first_name || "")
+              .toLowerCase()
+              .includes(search) ||
+            String(item.last_name || "")
+              .toLowerCase()
+              .includes(search) ||
+            String(item.email || "")
+              .toLowerCase()
+              .includes(search) ||
+            String(item.phone || "")
+              .toLowerCase()
+              .includes(search) ||
+            String(item.roll_no || "")
+              .toLowerCase()
+              .includes(search) ||
+            String(item.year || "")
+              .toLowerCase()
+              .includes(search)
+          );
+        });
+
+        displayRegistrations(filtered);
+      });
+
+      // ============================================
+      // REFRESH
+      // ============================================
+
+      document
+        .getElementById("refreshBtn")
+        .addEventListener("click", loadRegistrations);
+
+      // ============================================
+      // AUTO REFRESH EVERY 15 SECONDS
+      // ============================================
+
+      setInterval(function () {
+        if (dashboardSection.style.display !== "none") {
+          loadRegistrations();
+        }
+      }, 15000);
+
+      // ============================================
+      // LOGOUT
+      // ============================================
+
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", async function () {
+          await supabaseClient.auth.signOut();
+
+          dashboardSection.style.display = "none";
+
+          loginSection.style.display = "block";
+
+          loginForm.reset();
+        });
+
+      // ============================================
+      // CSV DOWNLOAD
+      // ============================================
+
+      document.getElementById("csvBtn").addEventListener("click", function () {
+        if (registrations.length === 0) {
+          alert("There are no registrations to download.");
+
+          return;
+        }
+
+        const headers = [
+          "ID",
+          "Created At",
+          "First Name",
+          "Last Name",
+          "Email",
+          "Phone",
+          "Roll No",
+          "Year",
+          "Department",
+        ];
+
+        const rows = registrations.map(function (item) {
+          return [
+            item.id,
+            item.created_at,
+            item.first_name,
+            item.last_name,
+            item.email,
+            item.phone,
+            item.roll_no,
+            item.year,
+            item.department,
+          ];
+        });
+
+        const csv = [headers, ...rows]
+          .map(function (row) {
+            return row
+              .map(function (value) {
+                return csvEscape(value);
+              })
+              .join(",");
+          })
+          .join("\n");
+
+        const blob = new Blob([csv], {
+          type: "text/csv;charset=utf-8;",
+        });
+
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+
+        link.href = url;
+
+        link.download = "tech-orbit-registrations.csv";
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url);
+      });
+
+      // ============================================
+      // CSV ESCAPE
+      // ============================================
+
+      function csvEscape(value) {
+        if (value === null || value === undefined) {
+          return '""';
+        }
+
+        return '"' + String(value).replace(/"/g, '""') + '"';
+      }
+
+      // ============================================
+      // HTML ESCAPE
+      // ============================================
+
+      function escapeHTML(value) {
+        if (value === null || value === undefined) {
+          return "";
+        }
+
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // ============================================
+      // CHECK EXISTING LOGIN SESSION
+      // ============================================
+
+      async function checkSession() {
+        const {
+          data: { session },
+        } = await supabaseClient.auth.getSession();
+
+        if (session && session.user) {
+          showDashboard(session.user);
+        }
+      }
+
+      checkSession();
+      // ============================================
+// DELETE REGISTRATION
+// ============================================
+
+async function deleteRegistration(id) {
+
+    const registration =
+        registrations.find(function(item) {
+            return item.id === id;
+        });
+
+    if (!registration) {
+        return;
+    }
+
+    const confirmed = confirm(
+        "Are you sure you want to delete the registration of " +
+        registration.first_name +
+        " " +
+        registration.last_name +
+        "?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    status.textContent =
+        "Deleting registration...";
+
+    const { error } =
+        await supabaseClient
+            .from("registrations")
+            .delete()
+            .eq("id", id);
+
+    if (error) {
+
+        console.error(error);
+
+        status.textContent =
+            "Delete failed: " +
+            error.message;
+
+        alert(
+            "Could not delete registration.\n\n" +
+            error.message
+        );
+
+        return;
+    }
+
+    alert("Registration deleted successfully.");
+
+    await loadRegistrations();
+}
     </script>
-</body>
+  </body>
 </html>
+ 
