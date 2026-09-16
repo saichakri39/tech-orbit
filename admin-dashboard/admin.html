@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tech Orbit Admin</title>
+    <style>
+        body { font-family: Arial; background: #0D1B2A; color: white; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #FF8C00; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #2E6FBE; padding: 12px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #333; }
+        tr:hover { background: #1A2332; }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 20px 0; }
+        .stat-box { background: #1A2332; padding: 20px; border-radius: 5px; text-align: center; }
+        .stat-num { font-size: 32px; color: #FF8C00; font-weight: bold; }
+        button { padding: 10px 20px; background: #FF8C00; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 10px; }
+        button:hover { background: #E36C09; }
+        .search { margin: 20px 0; }
+        input[type="text"] { padding: 10px; width: 300px; border: 1px solid #2E6FBE; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TECH ORBIT - ADMIN DASHBOARD</h1>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-num" id="total">0</div>
+                <div>Total Registrations</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num" id="today">0</div>
+                <div>Today's Registrations</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num" id="year2">0</div>
+                <div>2nd Year</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num" id="year3">0</div>
+                <div>3rd Year</div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" id="search" placeholder="Search by name, email, roll no...">
+            <button onclick="downloadCSV()"> Download CSV</button>
+            <button onclick="clearData()">Clear All</button>
+        </div>
+
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Timestamp</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Roll No</th>
+                    <th>Year</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        function loadData() {
+            let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+            let search = document.getElementById('search').value.toLowerCase();
+            
+            // Filter
+            let filtered = registrations.filter(r => 
+                (r.firstName + r.lastName + r.email + r.rollNo).toLowerCase().includes(search)
+            );
+
+            // Display
+            let html = filtered.map((r, i) => `
+                <tr>
+                    <td>${registrations.length - registrations.indexOf(r)}</td>
+                    <td>${r.timestamp}</td>
+                    <td>${r.firstName} ${r.lastName}</td>
+                    <td>${r.email}</td>
+                    <td>${r.phone}</td>
+                    <td>${r.rollNo}</td>
+                    <td>${r.year}</td>
+                    <td>${r.department}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('tbody').innerHTML = html || '<tr><td colspan="8" style="text-align:center;">No registrations yet</td></tr>';
+
+            // Stats
+            document.getElementById('total').textContent = registrations.length;
+            document.getElementById('today').textContent = registrations.filter(r => r.timestamp.includes(new Date().toLocaleDateString())).length;
+            document.getElementById('year2').textContent = registrations.filter(r => r.year === '2nd Year').length;
+            document.getElementById('year3').textContent = registrations.filter(r => r.year === '3rd Year').length;
+        }
+
+        function downloadCSV() {
+            let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+            if (registrations.length === 0) {
+                alert('No registrations to download!');
+                return;
+            }
+
+            let csv = 'Timestamp,First Name,Last Name,Email,Phone,Roll No,Year,Department\n';
+            registrations.forEach(r => {
+                csv += `"${r.timestamp}","${r.firstName}","${r.lastName}","${r.email}","${r.phone}","${r.rollNo}","${r.year}","${r.department}"\n`;
+            });
+
+            let blob = new Blob([csv], { type: 'text/csv' });
+            let url = window.URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.href = url;
+            a.download = `tech_orbit_registrations_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            
+            alert(` CSV Downloaded! (${registrations.length} registrations)`);
+        }
+
+        function clearData() {
+            if (confirm('Delete ALL data? Cannot undo!')) {
+                localStorage.removeItem('registrations');
+                loadData();
+                alert('Data cleared!');
+            }
+        }
+
+        document.getElementById('search').addEventListener('input', loadData);
+        window.addEventListener('load', loadData);
+        setInterval(loadData, 3000); // Refresh every 3 seconds
+    </script>
+</body>
+</html>
