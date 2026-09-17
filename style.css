@@ -628,20 +628,120 @@ footer {
         flex-direction: column
     }
 }
+
+
+.hero-tagline {
+    margin: 18px 0 0;
+    color: #d9e5f2;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2.5px
+}
+
 .mission-list {
-  margin: 20px 0 0;
-  padding-left: 20px;
+    margin: 18px 0 0;
+    padding-left: 20px;
+    color: #c2d0df
 }
 
 .mission-list li {
-  margin-bottom: 12px;
-  line-height: 1.7;
+    margin-bottom: 12px;
+    line-height: 1.65
 }
 
-.orbit-tagline {
-  text-align: center;
-  margin-top: 45px;
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+.qr-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px
+}
+
+.qr-modal.open {
+    display: flex
+}
+
+.qr-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .75);
+    backdrop-filter: blur(5px)
+}
+
+.qr-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(430px, 100%);
+    padding: 34px 28px 30px;
+    border-radius: 24px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, .35)
+}
+
+.qr-dialog h2 {
+    margin: 0 0 20px;
+    font-size: 32px;
+    color: var(--navy);
+    line-height: 1.1
+}
+
+.qr-dialog .eyebrow {
+    margin-bottom: 8px
+}
+
+.qr-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    background: transparent;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer
+}
+
+.qr-image {
+    width: min(280px, 80vw);
+    height: auto;
+    margin: 0 auto 18px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 12px
+}
+
+.qr-help {
+    margin: 0 auto 20px;
+    max-width: 330px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55
+}
+
+.qr-register {
+    width: 100%
+}
+
+.modal-open {
+    overflow: hidden
+}
+
+@media(max-width:760px) {
+    .hero-tagline {
+        font-size: 13px;
+        letter-spacing: 1.5px
+    }
+
+    .qr-dialog {
+        padding: 30px 20px 24px
+    }
+
+    .qr-image {
+        width: min(260px, 78vw)
+    }
 }
