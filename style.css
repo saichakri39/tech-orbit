@@ -745,3 +745,122 @@ footer {
         width: min(260px, 78vw)
     }
 }
+/* =================================
+   INAUGURATION GALLERY
+================================= */
+
+.inauguration-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.inauguration-photo {
+  overflow: hidden;
+  border-radius: 20px;
+  aspect-ratio: 4 / 3;
+  background: #111;
+}
+
+.inauguration-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.inauguration-photo:hover img {
+  transform: scale(1.06);
+}
+
+.inauguration-info {
+  max-width: 800px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.inauguration-info h3 {
+  margin: 15px 0;
+  font-size: 2rem;
+}
+
+.inauguration-info p {
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+
+/* =================================
+   MISSION
+================================= */
+
+.mission-list {
+  margin: 20px 0 0;
+  padding-left: 20px;
+}
+
+.mission-list li {
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+
+/* =================================
+   ORBIT TAGLINE
+================================= */
+
+.orbit-tagline {
+  text-align: center;
+  margin-top: 45px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+
+/* =================================
+   ADMIN LOGIN
+================================= */
+
+.admin-footer-link {
+  text-align: center;
+  padding: 15px 20px 25px;
+}
+
+.admin-footer-link a {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.admin-footer-link a:hover {
+  opacity: 1;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 800px) {
+
+  .inauguration-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .inauguration-photo {
+    aspect-ratio: 16 / 10;
+  }
+
+  .inauguration-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .orbit-tagline {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+
+}
