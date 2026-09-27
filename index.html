@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
 
   <meta
@@ -26,24 +27,902 @@
     rel="stylesheet"
     href="style.css"
   >
+
 </head>
 
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
 
-  <header
-    class="site-header"
-    id="top"
-  >
+<!-- =================================
+     NAVIGATION
+================================= -->
 
-    <div class="container nav-wrap">
+<header
+  class="site-header"
+  id="top"
+>
+
+  <div class="container nav-wrap">
+
+    <a
+      class="brand"
+      href="#home"
+    >
+
+      <img
+        src="logo.jpeg"
+        alt="Tech Orbit logo"
+      >
+
+      <span>
+        TECH <b>ORBIT</b>
+      </span>
+
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+
+    <nav
+      class="nav"
+      id="mainNav"
+    >
+
+      <a href="#home">Home</a>
+
+      <a href="#about">About</a>
+
+      <a href="#vision">Vision</a>
+
+      <a href="#mission">Mission</a>
+
+      <a href="#activities">Activities</a>
+
+      <a href="#events">Launch</a>
+
+      <a href="#team">Team</a>
+
+      <a href="#contact">Contact</a>
 
       <a
-        class="brand"
+        class="nav-register"
+        href="register.html"
+      >
+        Register
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =================================
+     HERO
+================================= -->
+
+<section
+  class="hero"
+  id="home"
+>
+
+  <div class="hero-grid container">
+
+
+    <div class="hero-content reveal">
+
+      <p class="eyebrow">
+        AI &amp; DATA SCIENCE COMMUNITY
+      </p>
+
+
+      <h1>
+        TECH <span>ORBIT</span>
+      </h1>
+
+
+      <p class="hero-tagline">
+        ORBITING KNOWLEDGE. LAUNCHING FUTURES.
+      </p>
+
+
+      <p class="hero-text">
+        A student community where ideas turn into action,
+        students learn from each other, and technology becomes
+        something you build — not just something you study.
+      </p>
+
+
+      <div class="hero-actions">
+
+        <a
+          class="btn btn-primary"
+          href="register.html"
+        >
+          Register Now →
+        </a>
+
+
+        <button
+          class="btn btn-secondary"
+          id="showQrBtn"
+          type="button"
+        >
+          Show QR Code
+        </button>
+
+
+        <a
+          class="btn btn-secondary"
+          href="#about"
+        >
+          Explore Tech Orbit
+        </a>
+
+      </div>
+
+
+      <div class="hero-points">
+
+        <span>
+          Learn by doing
+        </span>
+
+        <span>
+          Build together
+        </span>
+
+        <span>
+          Create impact
+        </span>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="hero-card reveal">
+
+      <div class="orbit-ring ring-one"></div>
+
+      <div class="orbit-ring ring-two"></div>
+
+
+      <div class="hero-logo">
+
+        <img
+          src="logo.jpeg"
+          alt="Tech Orbit"
+        >
+
+      </div>
+
+
+      <p>
+        TECH ORBIT
+      </p>
+
+
+      <small>
+        Where curiosity meets technology.
+      </small>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     ABOUT
+================================= -->
+
+<section
+  class="section"
+  id="about"
+>
+
+  <div class="container two-column">
+
+
+    <div class="section-heading reveal">
+
+      <p class="eyebrow">
+        ABOUT US
+      </p>
+
+      <h2>
+        One club. Many possibilities.
+      </h2>
+
+    </div>
+
+
+    <div class="section-copy reveal">
+
+      <p>
+        Tech Orbit is a student-focused technology club created
+        to bring curious minds together. We encourage students
+        to explore new technologies, strengthen practical skills,
+        work in teams, and transform ideas into projects.
+      </p>
+
+
+      <p>
+        Through technical sessions, ideathons, project building,
+        competitions, and peer learning, the club creates a space
+        where students can learn beyond the classroom.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     VISION + MISSION
+================================= -->
+
+<section
+  class="section dark-section"
+  id="vision"
+>
+
+  <div class="container vision-grid">
+
+
+    <!-- VISION -->
+
+    <article class="vision-card reveal">
+
+      <div class="icon">
+        ◉
+      </div>
+
+
+      <p class="eyebrow">
+        OUR VISION
+      </p>
+
+
+      <h2>
+        Build a community of creators.
+      </h2>
+
+
+      <p>
+        A place where AI &amp; Data Science students stop learning
+        in isolation and start learning from each other — building
+        real skill, real confidence, and a habit of never stopping
+        at “good enough.”
+      </p>
+
+    </article>
+
+
+
+    <!-- MISSION -->
+
+    <article
+      class="vision-card mission-card reveal"
+      id="mission"
+    >
+
+      <div class="icon">
+        ✦
+      </div>
+
+
+      <p class="eyebrow">
+        OUR MISSION
+      </p>
+
+
+      <h2>
+        Learn. Build. Compete. Lead.
+      </h2>
+
+
+      <ul class="mission-list">
+
+        <li>
+          Get 2nd, 3rd, and final-year students learning from
+          each other, not just from a syllabus.
+        </li>
+
+        <li>
+          Run weekly, practical sessions that teach things
+          students will actually use.
+        </li>
+
+        <li>
+          Put students on real projects and challenges,
+          not just theory.
+        </li>
+
+        <li>
+          Build leadership and problem-solving alongside
+          technical skill.
+        </li>
+
+        <li>
+          Push students to compete, build, and create work
+          that matters.
+        </li>
+
+      </ul>
+
+    </article>
+
+  </div>
+
+
+  <div class="container orbit-tagline reveal">
+
+    ORBITING KNOWLEDGE. LAUNCHING FUTURES.
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     ACTIVITIES
+================================= -->
+
+<section
+  class="section"
+  id="activities"
+>
+
+  <div class="container">
+
+
+    <div class="center-heading reveal">
+
+      <p class="eyebrow">
+        WHAT WE DO
+      </p>
+
+
+      <h2>
+        Activities at Tech Orbit
+      </h2>
+
+
+      <p>
+        Learning becomes powerful when you put it into practice.
+      </p>
+
+    </div>
+
+
+
+    <div class="cards-grid">
+
+
+      <!-- IDEATHON -->
+
+      <article class="feature-card reveal">
+
+        <div class="feature-icon">
+          💡
+        </div>
+
+        <h3>
+          Ideathon
+        </h3>
+
+        <p>
+          Turn real-world problems into innovative ideas,
+          practical concepts and solutions that can make an impact.
+        </p>
+
+      </article>
+
+
+
+      <!-- HACKATHONS -->
+
+      <article class="feature-card reveal">
+
+        <div class="feature-icon">
+          ⚡
+        </div>
+
+        <h3>
+          Hackathons
+        </h3>
+
+        <p>
+          Team up, solve real problems, prototype ideas and
+          present working solutions.
+        </p>
+
+      </article>
+
+
+
+      <!-- TECH TALKS -->
+
+      <article class="feature-card reveal">
+
+        <div class="feature-icon">
+          🎤
+        </div>
+
+        <h3>
+          Tech Talks
+        </h3>
+
+        <p>
+          Learn from students and industry professionals through
+          focused technical sessions.
+        </p>
+
+      </article>
+
+
+
+      <!-- PROJECT BUILDING -->
+
+      <article class="feature-card reveal">
+
+        <div class="feature-icon">
+          🛠️
+        </div>
+
+        <h3>
+          Project Building
+        </h3>
+
+        <p>
+          Turn classroom concepts into useful applications
+          and portfolio-ready projects.
+        </p>
+
+      </article>
+
+
+
+      <!-- COMPETITIONS -->
+
+      <article class="feature-card reveal">
+
+        <div class="feature-icon">
+          🏆
+        </div>
+
+        <h3>
+          Competitions
+        </h3>
+
+        <p>
+          Challenge yourself through coding, quizzes,
+          innovation contests and team activities.
+        </p>
+
+      </article>
+
+
+
+      <!-- PEER LEARNING -->
+
+      <article class="feature-card reveal">
+
+        <div class="feature-icon">
+          🤝
+        </div>
+
+        <h3>
+          Peer Learning
+        </h3>
+
+        <p>
+          Share knowledge, mentor one another and grow together
+          as a technical community.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     TECH ORBIT LAUNCH
+================================= -->
+
+<section
+  class="section launch-section"
+  id="events"
+>
+
+  <div class="container">
+
+
+    <div class="center-heading reveal">
+
+      <p class="eyebrow">
+        THE LAUNCH
+      </p>
+
+
+      <h2>
+        TECH ORBIT IS HERE.
+      </h2>
+
+
+      <p class="launch-main-text">
+        A new community. A new energy. A new way to learn,
+        build and create.
+      </p>
+
+    </div>
+
+
+
+    <!-- TWO LARGE IMAGES -->
+
+    <div class="launch-gallery">
+
+
+      <!-- T-SHIRT -->
+
+      <article class="launch-image-card reveal">
+
+        <img
+          src="t-shirt.jpeg"
+          alt="Tech Orbit T-shirt launch"
+          loading="lazy"
+        >
+
+
+        <div class="launch-image-caption">
+
+          <span>
+            01
+          </span>
+
+
+          <h3>
+            WEAR THE ORBIT
+          </h3>
+
+
+          <p>
+            More than a club. A community with an identity.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- INAUGURATION -->
+
+      <article class="launch-image-card reveal">
+
+        <img
+          src="inauguration-2.jpg"
+          alt="Tech Orbit Club inauguration"
+          loading="lazy"
+        >
+
+
+        <div class="launch-image-caption">
+
+          <span>
+            02
+          </span>
+
+
+          <h3>
+            THE JOURNEY BEGINS
+          </h3>
+
+
+          <p>
+            From ideas to action. From students to creators.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+
+    <!-- HYPE POINTS -->
+
+    <div class="launch-points reveal">
+
+
+      <div class="launch-point">
+
+        <strong>
+          01
+        </strong>
+
+        <span>
+          LEARN
+        </span>
+
+        <p>
+          Learn from each other.
+        </p>
+
+      </div>
+
+
+
+      <div class="launch-point">
+
+        <strong>
+          02
+        </strong>
+
+        <span>
+          BUILD
+        </span>
+
+        <p>
+          Turn ideas into real projects.
+        </p>
+
+      </div>
+
+
+
+      <div class="launch-point">
+
+        <strong>
+          03
+        </strong>
+
+        <span>
+          COMPETE
+        </span>
+
+        <p>
+          Take on challenges and push further.
+        </p>
+
+      </div>
+
+
+
+      <div class="launch-point">
+
+        <strong>
+          04
+        </strong>
+
+        <span>
+          CREATE
+        </span>
+
+        <p>
+          Build work that matters.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- FINAL HYPE -->
+
+    <div class="launch-statement reveal">
+
+      <p>
+        THIS IS NOT JUST ANOTHER CLUB.
+      </p>
+
+
+      <h3>
+        THIS IS YOUR ORBIT.
+      </h3>
+
+
+      <span>
+        ORBITING KNOWLEDGE. LAUNCHING FUTURES.
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     TEAM
+================================= -->
+
+<section
+  class="section"
+  id="team"
+>
+
+  <div class="container">
+
+
+    <div class="center-heading reveal">
+
+      <p class="eyebrow">
+        OUR TEAM
+      </p>
+
+
+      <h2>
+        People behind Tech Orbit
+      </h2>
+
+
+      <p>
+        Students working together to build, learn and grow.
+      </p>
+
+    </div>
+
+
+
+    <div class="team-grid">
+
+
+      <article class="team-card reveal">
+
+        <div class="avatar">
+          P
+        </div>
+
+
+        <h3>
+          Club President
+        </h3>
+
+
+        <p>
+          Student Leadership
+        </p>
+
+      </article>
+
+
+
+      <article class="team-card reveal">
+
+        <div class="avatar">
+          T
+        </div>
+
+
+        <h3>
+          Technical Team
+        </h3>
+
+
+        <p>
+          Technology &amp; Projects
+        </p>
+
+      </article>
+
+
+
+      <article class="team-card reveal">
+
+        <div class="avatar">
+          E
+        </div>
+
+
+        <h3>
+          Events Team
+        </h3>
+
+
+        <p>
+          Events &amp; Community
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     REGISTER BANNER
+================================= -->
+
+<section class="register-banner">
+
+  <div class="container banner-inner reveal">
+
+
+    <div>
+
+      <p class="eyebrow">
+        READY TO JOIN?
+      </p>
+
+
+      <h2>
+        Be part of the Tech Orbit community.
+      </h2>
+
+
+      <p>
+        Scan the club QR code or register online to become a member.
+      </p>
+
+    </div>
+
+
+    <a
+      class="btn btn-light"
+      href="register.html"
+    >
+      Register Now →
+    </a>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer id="contact">
+
+  <div class="container footer-grid">
+
+
+    <div>
+
+      <a
+        class="brand footer-brand"
         href="#home"
       >
 
@@ -59,954 +938,69 @@
       </a>
 
 
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Open menu"
-        aria-expanded="false"
-      >
-        ☰
-      </button>
-
-
-      <nav
-        class="nav"
-        id="mainNav"
-      >
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#vision">
-          Vision
-        </a>
-
-        <a href="#mission">
-          Mission
-        </a>
-
-        <a href="#activities">
-          Activities
-        </a>
-
-        <a href="#events">
-          Events
-        </a>
-
-        <a href="#team">
-          Team
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
-        <a
-          class="nav-register"
-          href="register.html"
-        >
-          Register
-        </a>
-
-      </nav>
-
-    </div>
-
-  </header>
-
-
-
-  <main>
-
-    <!-- =========================
-         HERO / LAUNCH SECTION
-    ========================== -->
-
-    <section
-      class="hero"
-      id="home"
-    >
-
-      <div class="hero-grid container">
-
-        <div class="hero-content reveal">
-
-          <h1>
-            TECH <span>ORBIT</span>
-          </h1>
-
-
-          <p class="hero-tagline">
-            ORBITING KNOWLEDGE. LAUNCHING FUTURES.
-          </p>
-
-
-          <p class="hero-text">
-            Welcome to Tech Orbit — a student community for learning
-            technology, building practical projects, collaborating with peers,
-            and turning ideas into action.
-          </p>
-
-
-          <div class="hero-actions">
-
-            <a
-              class="btn btn-primary"
-              href="register.html"
-            >
-              Register Now →
-            </a>
-
-
-            <button
-              class="btn btn-secondary"
-              id="showQrBtn"
-              type="button"
-            >
-              Show QR Code
-            </button>
-
-
-            <a
-              class="btn btn-secondary"
-              href="#about"
-            >
-              Explore Tech Orbit
-            </a>
-
-          </div>
-
-
-          <div class="hero-points">
-
-            <span>
-              Learn by doing
-            </span>
-
-            <span>
-              Build together
-            </span>
-
-            <span>
-              Create impact
-            </span>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- HERO LOGO -->
-
-        <div class="hero-card reveal">
-
-          <div class="orbit-ring ring-one"></div>
-
-          <div class="orbit-ring ring-two"></div>
-
-
-          <div class="hero-logo">
-
-            <img
-              src="logo.jpeg"
-              alt="Tech Orbit"
-            >
-
-          </div>
-
-
-          <p>
-            TECH ORBIT
-          </p>
-
-
-          <small>
-            Where curiosity meets technology.
-          </small>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section
-      class="section"
-      id="about"
-    >
-
-      <div class="container two-column">
-
-
-        <div class="section-heading reveal">
-
-          <p class="eyebrow">
-            ABOUT US
-          </p>
-
-
-          <h2>
-            One club. Many possibilities.
-          </h2>
-
-        </div>
-
-
-
-        <div class="section-copy reveal">
-
-          <p>
-            Tech Orbit is a student-focused technology club created to bring
-            curious minds together. We encourage students to explore new
-            technologies, strengthen practical skills, work in teams, and
-            transform ideas into projects.
-          </p>
-
-
-          <p>
-            Through technical sessions, ideathons, project building,
-            competitions, and peer learning, the club creates a space where
-            students can learn beyond the classroom.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         VISION & MISSION
-    ========================== -->
-
-    <section
-      class="section dark-section"
-      id="vision"
-    >
-
-      <div class="container vision-grid">
-
-
-        <!-- VISION -->
-
-        <article class="vision-card reveal">
-
-          <div class="icon">
-            ◉
-          </div>
-
-
-          <p class="eyebrow">
-            OUR VISION
-          </p>
-
-
-          <h2>
-            Build a community of creators.
-          </h2>
-
-
-          <p>
-            A place where AI &amp; Data Science students stop learning in
-            isolation and start learning from each other — building real
-            skill, real confidence, and a habit of never stopping at
-            “good enough.”
-          </p>
-
-        </article>
-
-
-
-        <!-- MISSION -->
-
-        <article
-          class="vision-card mission-card reveal"
-          id="mission"
-        >
-
-          <div class="icon">
-            ✦
-          </div>
-
-
-          <p class="eyebrow">
-            OUR MISSION
-          </p>
-
-
-          <h2>
-            Learn. Build. Compete. Lead.
-          </h2>
-
-
-          <ul class="mission-list">
-
-            <li>
-              Get 2nd, 3rd, and final-year students learning from each other,
-              not just from a syllabus.
-            </li>
-
-            <li>
-              Run weekly, practical sessions that teach things students will
-              actually use.
-            </li>
-
-            <li>
-              Put students on real projects and challenges, not just theory.
-            </li>
-
-            <li>
-              Build leadership and problem-solving alongside technical skill.
-            </li>
-
-            <li>
-              Push students to compete, build, and create work that matters.
-            </li>
-
-          </ul>
-
-        </article>
-
-      </div>
-
-
-      <div class="container orbit-tagline reveal">
-
+      <p class="footer-note">
         ORBITING KNOWLEDGE. LAUNCHING FUTURES.
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         ACTIVITIES
-    ========================== -->
-
-    <section
-      class="section"
-      id="activities"
-    >
-
-      <div class="container">
-
-
-        <div class="center-heading reveal">
-
-          <p class="eyebrow">
-            WHAT WE DO
-          </p>
-
-
-          <h2>
-            Activities at Tech Orbit
-          </h2>
-
-
-          <p>
-            Learning becomes powerful when you put it into practice.
-          </p>
-
-        </div>
-
-
-
-        <div class="cards-grid">
-
-
-          <!-- IDEATHON -->
-
-          <article class="feature-card reveal">
-
-            <div class="feature-icon"></div>
-
-            <h3>
-              Ideathon
-            </h3>
-
-            <p>
-              Turn real-world problems into innovative ideas, practical
-              concepts and solutions that can make an impact.
-            </p>
-
-          </article>
-
-
-
-          <!-- HACKATHONS -->
-
-          <article class="feature-card reveal">
-
-            <div class="feature-icon"></div>
-
-            <h3>
-              Hackathons
-            </h3>
-
-            <p>
-              Team up, solve real problems, prototype ideas and present
-              working solutions.
-            </p>
-
-          </article>
-
-
-
-          <!-- TECH TALKS -->
-
-          <article class="feature-card reveal">
-
-            <div class="feature-icon"></div>
-
-            <h3>
-              Tech Talks
-            </h3>
-
-            <p>
-              Learn from faculty, students and industry professionals through
-              focused technical sessions.
-            </p>
-
-          </article>
-
-
-
-          <!-- PROJECT BUILDING -->
-
-          <article class="feature-card reveal">
-
-            <div class="feature-icon"></div>
-
-            <h3>
-              Project Building
-            </h3>
-
-            <p>
-              Turn classroom concepts into useful applications and
-              portfolio-ready projects.
-            </p>
-
-          </article>
-
-
-
-          <!-- COMPETITIONS -->
-
-          <article class="feature-card reveal">
-
-            <div class="feature-icon"></div>
-
-            <h3>
-              Competitions
-            </h3>
-
-            <p>
-              Challenge yourself through coding, quizzes, innovation contests
-              and team activities.
-            </p>
-
-          </article>
-
-
-
-          <!-- PEER LEARNING -->
-
-          <article class="feature-card reveal">
-
-            <div class="feature-icon"></div>
-
-            <h3>
-              Peer Learning
-            </h3>
-
-            <p>
-              Share knowledge, mentor one another and grow together as a
-              technical community.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         INAUGURATION / EVENTS
-    ========================== -->
-
-    <section
-      class="section event-section"
-      id="events"
-    >
-
-      <div class="container">
-
-
-        <div class="center-heading reveal">
-
-          <p class="eyebrow">
-            INAUGURATION
-          </p>
-
-
-          <h2>
-            Tech Orbit Club Inauguration
-          </h2>
-
-
-          <p>
-            A new journey of learning, collaboration, innovation and
-            technology.
-          </p>
-
-        </div>
-
-
-
-        <!-- IMAGE GALLERY -->
-
-        <div class="inauguration-gallery">
-
-
-          <div class="inauguration-photo reveal">
-
-            <img
-              src="/img1.jpeg"
-              alt="Tech Orbit Club inauguration"
-              loading="lazy"
-            >
-
-          </div>
-
-
-
-          <div class="inauguration-photo reveal">
-
-            <img
-              src="/img2.jpeg"
-              alt="Tech Orbit Club inauguration"
-              loading="lazy"
-            >
-
-          </div>
-
-
-
-          <div class="inauguration-photo reveal">
-
-            <img
-              src="/img3.jpeg"
-              alt="Tech Orbit Club inauguration"
-              loading="lazy"
-            >
-
-          </div>
-
-        </div>
-
-
-
-        <!-- EVENT INFORMATION -->
-
-        <div class="inauguration-info reveal">
-
-          <span class="event-badge">
-            TECH ORBIT
-          </span>
-
-
-          <h3>
-            Orbiting Knowledge. Launching Futures.
-          </h3>
-
-
-          <p>
-            The inauguration marks the beginning of a student-driven
-            community where AI &amp; Data Science students learn from each
-            other, build practical skills, take on challenges and create
-            meaningful projects.
-          </p>
-
-
-          <a
-            href="register.html"
-            class="btn btn-primary"
-          >
-            Join Tech Orbit →
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         TEAM
-    ========================== -->
-
-    <section
-      class="section"
-      id="team"
-    >
-
-      <div class="container">
-
-
-        <div class="center-heading reveal">
-
-          <p class="eyebrow">
-            OUR TEAM
-          </p>
-
-
-          <h2>
-            People behind Tech Orbit
-          </h2>
-
-
-          <p>
-            Students working together to build, learn and grow.
-          </p>
-
-        </div>
-
-
-
-        <div class="team-grid">
-
-
-          <!-- PRESIDENT -->
-
-          <article class="team-card reveal">
-
-            <div class="avatar">
-              P
-            </div>
-
-
-            <h3>
-              Club President
-            </h3>
-
-
-            <p>
-              Student Leadership
-            </p>
-
-          </article>
-
-
-
-          <!-- TECHNICAL TEAM -->
-
-          <article class="team-card reveal">
-
-            <div class="avatar">
-              T
-            </div>
-
-
-            <h3>
-              Technical Team
-            </h3>
-
-
-            <p>
-              Technology &amp; Projects
-            </p>
-
-          </article>
-
-
-
-          <!-- EVENTS TEAM -->
-
-          <article class="team-card reveal">
-
-            <div class="avatar">
-              E
-            </div>
-
-
-            <h3>
-              Events Team
-            </h3>
-
-
-            <p>
-              Events &amp; Community
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         REGISTER BANNER
-    ========================== -->
-
-    <section class="register-banner">
-
-      <div class="container banner-inner reveal">
-
-
-        <div>
-
-          <p class="eyebrow">
-            READY TO JOIN?
-          </p>
-
-
-          <h2>
-            Be part of the Tech Orbit community.
-          </h2>
-
-
-          <p>
-            Scan the club QR code or register online to become a member.
-          </p>
-
-        </div>
-
-
-        <a
-          class="btn btn-light"
-          href="register.html"
-        >
-          Register Now →
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer id="contact">
-
-    <div class="container footer-grid">
-
-
-      <!-- BRAND -->
-
-      <div>
-
-        <a
-          class="brand footer-brand"
-          href="#home"
-        >
-
-          <img
-            src="logo.jpeg"
-            alt="Tech Orbit logo"
-          >
-
-
-          <span>
-            TECH <b>ORBIT</b>
-          </span>
-
-        </a>
-
-
-        <p class="footer-note">
-          ORBITING KNOWLEDGE. LAUNCHING FUTURES.
-        </p>
-
-      </div>
-
-
-
-      <!-- QUICK LINKS -->
-
-      <div>
-
-        <h3>
-          Quick Links
-        </h3>
-
-
-        <a href="#about">
-          About
-        </a>
-
-
-        <a href="#vision">
-          Vision
-        </a>
-
-
-        <a href="#mission">
-          Mission
-        </a>
-
-
-        <a href="#activities">
-          Activities
-        </a>
-
-
-        <a href="#events">
-          Events
-        </a>
-
-
-        <a href="register.html">
-          Register
-        </a>
-
-      </div>
-
-
-
-      <!-- CONTACT -->
-
-      <div>
-
-        <h3>
-          Contact
-        </h3>
-
-
-        <p>
-          Tech Orbit Club
-        </p>
-
-
-        <p>
-          AI &amp; Data Science Community
-        </p>
-
-
-        <p>
-          Official club contact
-        </p>
-
-      </div>
+      </p>
 
     </div>
 
 
 
-    <!-- FOOTER BOTTOM -->
+    <div>
 
-    <div class="container footer-bottom">
-
-      <span>
-        © <span id="year"></span> Tech Orbit Club
-      </span>
+      <h3>
+        Quick Links
+      </h3>
 
 
-      <a href="#top">
-        Back to top ↑
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#vision">
+        Vision
+      </a>
+
+      <a href="#mission">
+        Mission
+      </a>
+
+      <a href="#activities">
+        Activities
+      </a>
+
+      <a href="#events">
+        Launch
+      </a>
+
+      <a href="register.html">
+        Register
       </a>
 
     </div>
 
-  </footer>
 
 
+    <div>
 
-  <!-- =========================
-       QR CODE POPUP
-  ========================== -->
-
-  <div
-    class="qr-modal"
-    id="qrModal"
-    aria-hidden="true"
-  >
+      <h3>
+        Contact
+      </h3>
 
 
-    <div
-      class="qr-backdrop"
-      data-close-qr
-    ></div>
-
-
-    <div
-      class="qr-dialog"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="qrTitle"
-    >
-
-
-      <button
-        class="qr-close"
-        id="closeQrBtn"
-        type="button"
-        aria-label="Close QR code"
-      >
-        ×
-      </button>
-
-
-      <p class="eyebrow">
-        TECH ORBIT
+      <p>
+        Tech Orbit Club
       </p>
 
 
-      <h2 id="qrTitle">
-        Scan to Register
-      </h2>
-
-
-      <!-- EXISTING QR CODE -->
-
-      <img
-        class="qr-image"
-        src="tech_orbit_registration_qr.png"
-        alt="Tech Orbit registration QR code"
-      >
-
-
-      <p class="qr-help">
-        Scan this QR code with your phone camera to open the registration
-        form.
+      <p>
+        AI &amp; Data Science Community
       </p>
 
 
-      <a
-        class="btn btn-primary qr-register"
-        href="register.html"
-      >
-        Register Online →
-      </a>
+      <p>
+        Official club contact
+      </p>
 
     </div>
 
@@ -1014,23 +1008,109 @@
 
 
 
-  <!-- =========================
-       ADMIN LOGIN
-  ========================== -->
+  <div class="container footer-bottom">
 
-  <div class="admin-footer-link">
+    <span>
+      © <span id="year"></span> Tech Orbit Club
+    </span>
 
-    <a href="admin-dashboard/admin.html">
-      Admin Login
+
+    <a href="#top">
+      Back to top ↑
     </a>
 
   </div>
 
+</footer>
 
 
-  <!-- JAVASCRIPT -->
 
-  <script src="script.js"></script>
+<!-- =================================
+     ADMIN LOGIN
+================================= -->
+
+<div class="admin-footer-link">
+
+  <a href="admin-dashboard/admin.html">
+    Admin Login
+  </a>
+
+</div>
+
+
+
+<!-- =================================
+     QR CODE MODAL
+================================= -->
+
+<div
+  class="qr-modal"
+  id="qrModal"
+  aria-hidden="true"
+>
+
+
+  <div
+    class="qr-backdrop"
+    data-close-qr
+  ></div>
+
+
+  <div
+    class="qr-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="qrTitle"
+  >
+
+
+    <button
+      class="qr-close"
+      id="closeQrBtn"
+      type="button"
+      aria-label="Close QR code"
+    >
+      ×
+    </button>
+
+
+    <p class="eyebrow">
+      TECH ORBIT
+    </p>
+
+
+    <h2 id="qrTitle">
+      Scan to Register
+    </h2>
+
+
+    <img
+      class="qr-image"
+      src="tech_orbit_registration_qr.png"
+      alt="Tech Orbit registration QR code"
+    >
+
+
+    <p class="qr-help">
+      Scan this QR code with your phone camera to open
+      the registration form.
+    </p>
+
+
+    <a
+      class="btn btn-primary qr-register"
+      href="register.html"
+    >
+      Register Online →
+    </a>
+
+  </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
 
 </body>
 
