@@ -154,6 +154,7 @@
 
   <body>
     <div class="container">
+
       <!-- Tech Orbit Logo -->
       <img src="logo.jpeg" alt="Tech Orbit Logo" class="logo" />
 
@@ -165,9 +166,10 @@
       </p>
 
       <form id="form">
+
         <!-- First Name -->
         <div class="form-group">
-          <label for="fname"> First Name </label>
+          <label for="fname">First Name</label>
 
           <input
             type="text"
@@ -179,7 +181,7 @@
 
         <!-- Last Name -->
         <div class="form-group">
-          <label for="lname"> Last Name </label>
+          <label for="lname">Last Name</label>
 
           <input
             type="text"
@@ -191,7 +193,7 @@
 
         <!-- Email -->
         <div class="form-group">
-          <label for="email"> Email Address </label>
+          <label for="email">Email Address</label>
 
           <input
             type="email"
@@ -203,7 +205,7 @@
 
         <!-- Phone -->
         <div class="form-group">
-          <label for="phone"> Phone Number </label>
+          <label for="phone">Phone Number</label>
 
           <input
             type="tel"
@@ -218,7 +220,7 @@
 
         <!-- Roll Number -->
         <div class="form-group">
-          <label for="roll"> Roll Number </label>
+          <label for="roll">Roll Number</label>
 
           <input
             type="text"
@@ -230,22 +232,19 @@
 
         <!-- Year -->
         <div class="form-group">
-          <label for="year"> Year </label>
+          <label for="year">Year</label>
 
           <select id="year" required>
             <option value="">Select your year</option>
-
             <option value="2nd Year">2nd Year</option>
-
             <option value="3rd Year">3rd Year</option>
-
             <option value="Final Year">Final Year</option>
           </select>
         </div>
 
         <!-- Department -->
         <div class="form-group">
-          <label for="dept"> Department </label>
+          <label for="dept">Department</label>
 
           <select id="dept" required>
             <option value="">Select your department</option>
@@ -257,15 +256,19 @@
         </div>
 
         <!-- Submit -->
-        <button type="submit" id="submitBtn">JOIN TECH ORBIT</button>
+        <button type="submit" id="submitBtn">
+          JOIN TECH ORBIT
+        </button>
 
         <!-- Status message -->
         <div id="status" class="status"></div>
+
       </form>
 
       <p class="footer-text">
         Tech Orbit • CSE (Artificial Intelligence and Data Science)
       </p>
+
     </div>
 
     <script>
@@ -273,19 +276,18 @@
       // SUPABASE CONFIGURATION
       // =====================================================
 
-const SUPABASE_URL =
-    "https://seltfnpxbmekyskxztmv.supabase.co";
+      const SUPABASE_URL =
+        "https://seltfnpxbmekyskxztmv.supabase.co";
 
-      const SUPABASE_KEY = "sb_publishable_Euu6tTc4yeQBhMvWo1VuNQ_vBKvxhs9";
+      const SUPABASE_KEY =
+        "sb_publishable_Euu6tTc4yeQBhMvWo1VuNQ_vBKvxhs9";
 
       // =====================================================
       // FORM
       // =====================================================
 
       const form = document.getElementById("form");
-
       const submitButton = document.getElementById("submitBtn");
-
       const status = document.getElementById("status");
 
       // =====================================================
@@ -294,7 +296,6 @@ const SUPABASE_URL =
 
       function showStatus(message, type) {
         status.textContent = message;
-
         status.className = "status " + type;
       }
 
@@ -305,13 +306,10 @@ const SUPABASE_URL =
       form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        // Disable button
         submitButton.disabled = true;
-
         submitButton.textContent = "SUBMITTING...";
 
         status.className = "status";
-
         status.textContent = "";
 
         // =================================================
@@ -320,17 +318,11 @@ const SUPABASE_URL =
 
         const registration = {
           first_name: document.getElementById("fname").value.trim(),
-
           last_name: document.getElementById("lname").value.trim(),
-
           email: document.getElementById("email").value.trim(),
-
           phone: document.getElementById("phone").value.trim(),
-
           roll_no: document.getElementById("roll").value.trim(),
-
           year: document.getElementById("year").value,
-
           department: document.getElementById("dept").value,
         };
 
@@ -346,16 +338,13 @@ const SUPABASE_URL =
 
               headers: {
                 "Content-Type": "application/json",
-
-                apikey: SUPABASE_KEY,
-
-                Authorization: "Bearer " + SUPABASE_KEY,
-
-                Prefer: "return=minimal",
+                "apikey": SUPABASE_KEY,
+                "Authorization": "Bearer " + SUPABASE_KEY,
+                "Prefer": "return=minimal",
               },
 
               body: JSON.stringify(registration),
-            },
+            }
           );
 
           // =================================================
@@ -371,9 +360,16 @@ const SUPABASE_URL =
               console.error("Supabase error:", errorData);
 
               errorMessage =
-                errorData.message || errorData.error || errorMessage;
+                errorData.message ||
+                errorData.error ||
+                errorData.hint ||
+                errorMessage;
+
             } catch (jsonError) {
-              console.error("Could not read error:", jsonError);
+              console.error(
+                "Could not read Supabase error:",
+                jsonError
+              );
             }
 
             throw new Error(errorMessage);
@@ -383,35 +379,51 @@ const SUPABASE_URL =
           // SUCCESS
           // =================================================
 
-          console.log("Registration successful:", registration);
+          console.log(
+            "Registration successful:",
+            registration
+          );
 
           showStatus(
             "Registration successful! 🎉 Thank you for joining Tech Orbit.",
-            "success",
+            "success"
           );
 
           alert(
             "Registration Successful! 🎉\n\n" +
-              "Thank you for joining Tech Orbit!",
+            "Thank you for joining Tech Orbit!"
           );
 
           // Clear form
           form.reset();
+
         } catch (error) {
-          // =====================================================
+
+          // =================================================
           // ERROR
-          // =====================================================
+          // =================================================
 
-          console.error("Registration failed:", error);
+          console.error(
+            "Registration failed:",
+            error
+          );
 
-          showStatus("Registration failed: " + error.message, "error");
+          showStatus(
+            "Registration failed: " + error.message,
+            "error"
+          );
 
-          alert("Registration failed.\n\n" + error.message);
+          alert(
+            "Registration failed.\n\n" +
+            error.message
+          );
         }
 
-        // Enable button
-        submitButton.disabled = false;
+        // =================================================
+        // ENABLE BUTTON AGAIN
+        // =================================================
 
+        submitButton.disabled = false;
         submitButton.textContent = "JOIN TECH ORBIT";
       });
     </script>
